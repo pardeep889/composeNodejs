@@ -1,0 +1,28 @@
+version: "3"
+services:
+
+  admin:
+    image: admin
+    build:
+      context: ./admin
+      dockerfile: DockerfileAdmin
+    container_name: admin-container
+    volumes:
+      - /tmp/admin/npm:/root/.npm:z
+    ports:
+      - "3001:80"
+    depends_on:
+      - client
+    restart: always
+
+  client:
+    image: pardeep-image-2
+    build:
+      context: ./client
+      dockerfile: DockerfileClient
+    container_name: client-container
+    volumes:
+      - /tmp/client/npm:/root/.npm:z
+    ports:
+      - "3000:80"
+    restart: always

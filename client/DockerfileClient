@@ -1,0 +1,13 @@
+FROM node:10.15.3
+
+WORKDIR /usr/src/app
+COPY package*.json ./
+COPY nodemon.json ./
+COPY .env ./
+COPY app ./
+
+EXPOSE 80
+
+CMD npm config set cache-min 9999999 \
+    && npm ci \
+    && npm run start:dev
