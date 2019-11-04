@@ -4,12 +4,15 @@
   "description": "",
   "main": "./app/index.js",
   "scripts": {
-    "start:dev": "nodemon ./app/index.js"
+    "server": "nodemon ./app/index.js",
+    "client": "npm run start --prefix client",
+    "start:dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^5.0.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
