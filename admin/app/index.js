@@ -7,6 +7,6 @@ app.get('/', (req,res) => {
 })
 
 app.listen(80, () => {
-    console.log('Admin App is listening on port 80 in container')
+    console.log('Admin  App is listening on port 80 in container');
 })
 

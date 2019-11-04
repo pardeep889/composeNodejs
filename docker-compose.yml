@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
 
   admin:
@@ -9,6 +9,7 @@ services:
     container_name: admin-container
     volumes:
       - /tmp/admin/npm:/root/.npm:z
+      - ./admin/:/usr/src/app/:z
     ports:
       - "3001:80"
     depends_on:
@@ -22,7 +23,8 @@ services:
       dockerfile: DockerfileClient
     container_name: client-container
     volumes:
-      - /tmp/client/npm:/root/.npm:z
+        - /tmp/client/npm:/root/.npm:z
+        - ./client/:/usr/src/app/:z
     ports:
       - "3000:80"
     restart: always
