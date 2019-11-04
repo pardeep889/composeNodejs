@@ -12,19 +12,32 @@ services:
       - ./admin/:/usr/src/app/:z
     ports:
       - "3001:80"
-    depends_on:
-      - client
     restart: always
 
-  client:
-    image: pardeep-image-2
+  client-backend:
+    image: client-backend
     build:
       context: ./client
       dockerfile: DockerfileClient
-    container_name: client-container
+    container_name: client-backend
     volumes:
         - /tmp/client/npm:/root/.npm:z
         - ./client/:/usr/src/app/:z
     ports:
       - "3000:80"
     restart: always
+      
+  client-frontend:
+      image: client-frontend
+      build:
+        context: ./client/client
+        dockerfile: DockerfileClient
+      container_name: client-frontend
+      volumes:
+        - /tmp/admin-client/npm:/root/.npm:z
+        - ./client/client:/usr/src/app/client/client:z
+      ports:
+        - "5000:5000"
+      depends_on:
+        - client-backend
+      restart: always

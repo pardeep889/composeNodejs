@@ -1,0 +1,11 @@
+FROM node:10.15.3   
+
+WORKDIR /usr/src/app/client/client
+COPY package*.json ./
+COPY src ./
+copy public ./
+EXPOSE 8080
+
+CMD npm config set cache-min 9999999 \
+    && npm ci \
+    && npm run start
