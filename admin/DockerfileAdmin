@@ -3,14 +3,18 @@ FROM node:10.15.3
  
 ENV user pardeep
  
-RUN useradd -m -d /usr/src/app ${user} \
- && chown -R ${user} /usr/src/app
+RUN useradd -m -d /home/admin ${user} \
+ && chown -R ${user} /home/admin/
  
 USER ${user}
 
-WORKDIR /usr/src/app
-COPY . ./
+WORKDIR /home/admin/app
+COPY app ./
+COPY package.json ./
+
 
 EXPOSE 80
 
-CMD npm run start:dev
+CMD npm config set cache-min 9999999 \
+    && npm ic \
+    && npm run start:dev

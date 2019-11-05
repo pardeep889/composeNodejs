@@ -4,7 +4,7 @@ const app = express();
 let os = require('os')
 console.log(os.userInfo());
 
-
+console.log(__dirname);
 app.get('/', (req,res) => {
     res.send(" i am admin...");    
 })
