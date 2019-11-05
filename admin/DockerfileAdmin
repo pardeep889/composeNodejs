@@ -1,7 +1,7 @@
 FROM node:10.15.3
 
  
-ENV user pardeep
+ENV user admin_backend
  
 RUN useradd -m -d /home/admin ${user} \
  && chown -R ${user} /home/admin/

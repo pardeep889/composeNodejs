@@ -27,7 +27,7 @@ services:
       - /tmp/admin/npm:/root/.npm:z
       - ./admin/:/home/admin/:z
     ports:
-      - "3001:80"
+      - "3001:8080"
     restart: always
       
   # client-frontend:
